@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+{% endblock %}
+{% block header %}{% endblock %}
+{% block warp%}
+    <div id="warp">
+        <div id="login_background">
+            <img class="current" src="/static/image/LoginBackground/first.jpg">
+            <img src="/static/image/LoginBackground/2.jpg">
+            <!--<img src="/static/image/LoginBackground/last.png">-->
+        </div>
+        <div id="login">
+            <div id="login_title">选课系统登录</div>
+            <form id="login_form" action="/SCS/login/" method="post">
+                {% csrf_token %}
+                {% if login_error %}<div id="login_error">{{ login_error }}</div>{% endif %}
+                <input type="text" name="username" placeholder="学号/教工号/管理员帐号/ID">
+                <input type="password" name="password" placeholder="密码/Password">
+                <select name="type">
+                    <option value="no-select" disabled>请选择登录方式</option>
+                    <option value="student">学生登录</option>
+                    <option value="teacher">教工登录</option>
+                    <option value="admin">管理员登录</option>
+                </select>
+                <button type="submit" >登录 sign in</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <div id="footer">
+        <div id="foot_info">
+            Copyright &copy; 2016  Powered by GLLZY
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/static/js/login.js"></script>
+{% endblock %}

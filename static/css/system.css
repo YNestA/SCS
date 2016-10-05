@@ -1,0 +1,105 @@
+#header,header{
+    width: 100%;
+    height: 60px;
+    background-color: #265a88;
+}
+#header_container{
+    margin: 0 50px;
+    height: 60px;
+}
+#logo{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+#logo img{
+    height: 100%;
+}
+#header_title{
+    display: inline-block;
+    font-size: 28px;
+    color:white;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: middle;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left:1px solid slategray;
+}
+#header_container>ul{
+    float: right;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+#header_container>ul>li{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    color: #DDD;
+    font-size: 18px;
+    position: relative;
+}
+#header_container>ul>li img{
+    width: 40px;
+    height: 100%;
+}
+#header_dropdown{
+    position: absolute;
+    width: 150px;
+    right: 0;
+    top:45px;
+    background-color: white;
+    color: #444;
+    border:1px solid lightgray;
+    box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    display: none;
+}
+#header_dropdown ul{
+    margin: 0;
+    padding: 5px 0;
+    display: block;
+    list-style-type: none;
+}
+#header_dropdown ul li{
+    padding: 0 15px;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+#header_dropdown ul li:hover{
+    color: white;
+    background-color: #4078c0;
+}
+#signID{
+    line-height: 40px;
+    color:#767676;
+    font-size: 15px;
+    border-bottom: 1px solid lightgray;
+    padding: 0 15px;
+}
+#signID strong{
+    color: #767676;
+    font-weight: 600;
+    font-size: 16px;
+}
+div.dropdown_arrow,div.dropdown_arrow_border{
+    position: absolute;
+    right: 9px;
+    width: 0;
+    border: 10px solid;
+}
+div.dropdown_arrow{
+    top:-19px;
+    border-color: transparent transparent white transparent;
+}
+div.dropdown_arrow_border{
+    top:-20px;
+    border-color: transparent transparent lightgray transparent;
+}
+#header_dropdown_btn{
+    cursor: pointer;
+}

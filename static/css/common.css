@@ -1,0 +1,22 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body{
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    word-wrap: break-word;
+    background-size: 100%,100%;
+    background-color: rgb(249,249,249);
+    background: url("/static/image/common/body_bg.jpg") repeat-y fixed;
+    font-family: "Microsoft Yahei","Hiragino Sans GB",Helvetica,"Helvetica Neue","微软雅黑",Tahoma,Arial,sans-serif;
+}
+/*html5*/
+article,aside,dialog,footer,header,section,footer,nav,figure,menu{
+    display:block;
+}
+a,button,input,select{
+    outline:0 none;
+}

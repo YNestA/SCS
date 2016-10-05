@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}学生选课系统{% endblock %}
+{% block css %}<link type="text/css" rel="stylesheet" href="/static/css/system.css">{% endblock %}
+{% block header %}
+     {% if user.is_authenticated %}
+        <div id="header"><div id="header_container">
+            <div id="logo"><img src="/static/image/common/logo.gif"></div>
+            <div id="header_title">学生选课系统</div>
+            <ul >
+                <li ><img src="/static/image/common/user.png"></li>
+                <li>{{ user.common_user_profile.name }}</li>
+                <li id="header_dropdown_btn">
+                    <img src="/static/image/common/arrow_drop_down.png">
+                    <div id="header_dropdown">
+                        <div id="signID">As <strong>{{ user.username }}</strong></div>
+                        <ul>
+                            <li>维护我的信息</li>
+                            <li>杀死那个胖子</li>
+                            <li id="sign_out">退出</li>
+                        </ul>
+                        <div class="dropdown_arrow_border"></div>
+                        <div class="dropdown_arrow"></div>
+                    </div>
+                </li>
+            </ul>
+            <div style="clear: both"></div>
+        </div></div>
+     {% endif %}
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/static/js/system.js"></script>
+{% endblock %}
