@@ -1,0 +1,26 @@
+#course_table{
+    width: 100%;
+    border-collapse:collapse ;
+}
+#course_table td,#course_table th{
+    border: 1px solid lightslategrey;
+    text-align: center;
+}
+#course_table th{
+    color: white;
+    background-color: #1b6d85;
+    padding: 5px 2px;
+}
+#course_table td{
+    padding: 3px 2px;
+}
+#course_table td.table_btn_td{
+    position: relative;
+    text-align: right;
+    padding: 8px 10px;
+    height: 20px;
+}
+#look_course{
+    margin-top: 10px;
+    border-radius: 3px;
+}

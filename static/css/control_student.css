@@ -1,0 +1,48 @@
+#student_table{
+    width: 100%;
+    border-collapse:collapse ;
+}
+#student_table td,#student_table th{
+    border: 1px solid lightslategrey;
+    text-align: center;
+}
+#student_table th{
+    color: white;
+    background-color: #1b6d85;
+    padding: 5px 2px;
+}
+#student_table td{
+    padding: 3px 2px;
+}
+#student_table td.table_btn_td{
+   position: relative;
+    text-align: right;
+    padding: 8px 10px;
+    height: 20px;
+}
+#control_student{
+    margin-top: 10px;
+}
+.submit_score_btn{
+    display: inline-block;
+    background-color: steelblue;
+    color: white;
+    padding: 2px;
+    border: 1px lightgray solid;
+    margin: 0 5px;
+}
+input.score_input{
+    border: none;
+    text-align: center;
+    width: 40px;
+}
+input.in_modify {
+    border-bottom: 1px solid grey;
+}
+input.after_modify {
+    color: #67b168;
+}
+input.error_score{
+    color: firebrick;
+    border-bottom: 1px solid firebrick;
+}

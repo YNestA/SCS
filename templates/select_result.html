@@ -1,0 +1,59 @@
+{% extends "system.html" %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="/static/css/system.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/select_result.css">
+{% endblock %}
+{% block main %}
+    <div id="main">
+        <div id="select_result">
+            <div id="main_title">本学期选课结果</div>
+            <table id="select_table">
+                <thead>
+                <tr>
+                    <th>课程名称</th>
+                    <th>课程类别</th>
+                    <th>任课教师</th>
+                    <th>学时/学分</th>
+                    <th>当前人数/容量</th>
+                    <th>时间地点</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for course in select_result %}
+                     <tr data-id="{{ course.id }}"><td>{{ course.name }}</td><td>{{ course.category}}</td><td>{{ course.teacher }}</td><td>{{ course.period }}/{{ course.credit }}</td><td>{{ course.amount }}/{{ course.capacity }}</td><td><a class="look_lt_btn" href="javascript:;">查看</a></td><td><a class="drop_btn" href="javascript:;">退选</a></td></tr>
+                    {% endfor %}
+                    {% if not select_result %}
+                    <tr><td colspan="7" class="table_btn_td">
+                        <span id="no_course_tip">没有已选课程</span>
+                        {% if prev_url %}<a class="prev_btn" href="{{ prev_url }}">上一页</a>
+                        {% else %}
+                        <a class="prev_btn" href="javascript:;" style="visibility: hidden">上一页</a>
+                        {% endif %}
+                        {% if all_page_num %}
+                        跳转至
+                        <select class="table_pager" data-url="{{ select_url }}">
+                        {% for num in all_page_num %}
+                            {% ifequal forloop.counter current_page%}
+                            <option value="{{ num }}" selected="selected">{{ num }}</option>
+                            {% else %}
+                            <option value="{{ num }}">{{ num }}</option>
+                            {% endifequal %}
+                        {% endfor %}
+                        </select>
+                        {% endif %}
+                        {% if next_url %}<a class="next_btn" href="{{ next_url }}">下一页</a>
+                        {% else %}
+                            <a class="next_btn" href="javascript:;" style="visibility: hidden">下一页</a>
+                        {% endif %}
+                    </td></tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/static/js/system.js"></script>
+    <script type="text/javascript" src="/static/js/select_result.js"></script>
+{% endblock %}

@@ -66,13 +66,13 @@ div.login_show{
     color: #333;
     display: inline-block;
     height: 35px;
-    border:1px solid lightslategrey;
-    background-color: rgb(252,252,252);
+    /*border:1px solid lightslategrey;*/
     margin: 0 0 20px;
     font-size: 16px;
-    border-radius: 2px;
+    /*border-radius: 2px;*/
     box-shadow: 0 0 3px 1px rgba(0,0,0,0.1);
 }
+
 #login_form input{
     width: 100%;
     background-color: rgb(252,252,252);

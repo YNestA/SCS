@@ -1,0 +1,40 @@
+{% extends "system.html" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/css/system.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/own_course.css">
+{% endblock %}
+{% block main %}
+    <div id="main">
+        <div id="own_course">
+            <div id="main_title">本学期开课列表</div>
+            <table id="course_table">
+                <thead>
+                    <tr>
+                        <th>课程名称</th>
+                        <th>课程类别</th>
+                        <th>任课教师</th>
+                        <th>学时/学分</th>
+                        <th>当前人数/容量</th>
+                        <th>时间地点</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if own_course %}
+                        {% for course in own_course %}
+                        <tr data-id="{{ course.id }}"><td>{{ course.name }}</td><td>{{ course.category }}</td><td>{{ course.teacher }}</td><td>{{ course.period }}/{{ course.credit }}</td><td>{{ course.amount }}/{{ course.capacity }}</td><td><a class="look_lt_btn" href="javascript:;">查看</a></td><td><a href="{{ course.student_list_url }}">学生名单</a></td></tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr><td colspan="7" class="table_btn_td">
+                            <span id="no_course_tip">没有课程</span>
+                        </td></tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/static/js/system.js"></script>
+    <script type="text/javascript" src="/static/js/own_course.js"></script>
+{% endblock %}

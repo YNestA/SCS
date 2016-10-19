@@ -145,7 +145,7 @@ $(document).ajaxSend(function(event, xhr, settings) {
     }
 });
 $(document).ready(function () {
-   $("a,button").focus(function () {
+   $("button").focus(function () {
        $(this).blur();
    });
 });

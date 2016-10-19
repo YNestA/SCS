@@ -1,0 +1,69 @@
+{% extends "system.html" %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="/static/css/system.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/finish_course.css">
+{% endblock %}
+{% block main %}
+    <div id="main">
+        <div id="finish_course">
+            <div id="main_title">已修公选课目录</div>
+            <form id="search" method="post" action="/SCS/finish_course/search/">
+                {% csrf_token %}
+                <select id="search_category" name="term">
+                    <option value="all" selected="selected">所有学期</option>
+                    {% for term in terms %}
+                    <option value="{{term.id}}">{{ term.description }}</option>
+                    {% endfor %}
+                </select>
+                    <input type="text" id="search_input" name="name" value="{{ search_name }}">
+                    <button id="search_btn" type="submit">搜索</button>
+            </form>
+            <table id="finish_table">
+                <thead>
+                <tr>
+                    <th>选修学期</th>
+                    <th>课程名称</th>
+                    <th>课程类别</th>
+                    <th>任课教师</th>
+                    <th>学时/学分</th>
+                    <th>成绩</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for course in finish_course %}
+                        <tr><td>{{ course.term }}</td><td>{{ course.name }}</td><td>{{ course.category}}</td><td>{{ course.teacher }}</td><td>{{ course.period }}/{{ course.credit }}</td><td>{{ course.score }}</td></tr>
+                    {% endfor %}
+                    <tr><td colspan="7" class="table_btn_td">
+                    {% if not finish_course %}
+                        <span id="no_course_tip">未找到已修课程</span>
+                    {% endif %}
+                    {% if prev_url %}<a class="prev_btn" href="{{ prev_url }}">上一页</a>
+                    {% else %}
+                        <a class="prev_btn" href="javascript:;" style="visibility: hidden">上一页</a>
+                    {% endif %}
+                    {% if all_page_num %}
+                    跳转至
+                    <select class="table_pager" data-url="{{ select_url }}">
+                    {% for num in all_page_num %}
+                        {% ifequal forloop.counter current_page%}
+                        <option value="{{ num }}" selected="selected">{{ num }}</option>
+                        {% else %}
+                        <option value="{{ num }}">{{ num }}</option>
+                        {% endifequal %}
+                    {% endfor %}
+                    </select>
+                    {% endif %}
+                    {% if next_url %}<a class="next_btn" href="{{ next_url }}">下一页</a>
+                    {% else %}
+                        <a class="next_btn" href="javascript:;" style="visibility: hidden">下一页</a>
+                    {% endif %}
+                </td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/static/js/system.js"></script>
+    <script type="text/javascript" src="/static/js/finish_course.js"></script>
+{% endblock %}

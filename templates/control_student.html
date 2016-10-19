@@ -1,0 +1,72 @@
+{% extends "system.html" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/static/css/system.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/control_student.css">
+{% endblock %}
+{% block main %}
+    <div id="main">
+        <div id="control_student">
+            <div id="main_title">课程学生列表</div>
+            <form id="search" method="post" action="/SCS/control_student/search/">
+                {% csrf_token %}
+                <select id="search_type" name="search_type">
+                    <option value="course_name">按课程名称查找</option>
+                    <option value="student_id">按学生学号查找</option>
+                </select>
+                <input type="text" id="search_input" name="value" >
+                <button id="search_btn" type="submit">搜索</button>
+            </form>
+            <table id="student_table">
+                <thead>
+                    <tr>
+                        <th>课程名称</th>
+                        <th>课程类别</th>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>学院</th>
+                        <th>专业</th>
+                        <th>班级</th>
+                        <th>成绩</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for student in students %}
+                    <tr data-id="{{ student.record_id }}"><td>{{ student.course_name }}</td><td>{{ student.course_category }}</td><td>{{ student.username }}</td><td>{{ student.name }}</td><td>{{ student.college }}</td><td>{{ student.major }}</td><td>{{ student.class }}</td><td><input autocomplete="off" class="score_input" type="text" value="{{ student.score }}" readonly="readonly"></td><td><a class="modify_score_btn" href="javascript:;">修改成绩</a></td></tr>
+                {% endfor %}
+                    <tr><td colspan="9" class="table_btn_td">
+                        {% if not students %}
+                            <span id="no_course_tip">没有记录</span>
+                        {% else %}
+                            <a class="submit_score_btn" href="javascript:;">提交成绩</a>
+                        {% endif %}
+                        {% if prev_url %}<a class="prev_btn" href="{{ prev_url }}">上一页</a>
+                        {% else %}
+                            <a class="prev_btn" href="javascript:;" style="visibility: hidden">上一页</a>
+                        {% endif %}
+                        {% if all_page_num %}
+                        跳转至
+                        <select class="table_pager" data-url="{{ pager_url }}">
+                        {% for num in all_page_num %}
+                            {% ifequal forloop.counter current_page%}
+                            <option value="{{ num }}" selected="selected">{{ num }}</option>
+                            {% else %}
+                            <option value="{{ num }}">{{ num }}</option>
+                        {% endifequal %}
+                        {% endfor %}
+                        </select>
+                        {% endif %}
+                        {% if next_url %}<a class="next_btn" href="{{ next_url }}">下一页</a>
+                        {% else %}
+                        <a class="next_btn" href="javascript:;" style="visibility: hidden">下一页</a>
+                    {% endif %}
+                    </td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/static/js/system.js"></script>
+    <script type="text/javascript" src="/static/js/control_student.js"></script>
+{% endblock %}

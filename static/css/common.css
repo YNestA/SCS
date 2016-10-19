@@ -20,3 +20,10 @@ article,aside,dialog,footer,header,section,footer,nav,figure,menu{
 a,button,input,select{
     outline:0 none;
 }
+a{
+    text-decoration: none;
+    color: #204d74;
+}
+a:visited{
+    color: #204d74;
+}

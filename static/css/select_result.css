@@ -1,0 +1,25 @@
+#select_table{
+    width: 100%;
+    border-collapse:collapse ;
+}
+#select_table td,#select_table th{
+    border: 1px solid lightslategrey;
+    text-align: center;
+}
+#select_table th{
+    color: white;
+    background-color: #1b6d85;
+    padding: 5px 2px;
+}
+#select_table td{
+    padding: 3px 2px;
+}
+#select_table td.table_btn_td{
+   position: relative;
+    text-align: right;
+    padding: 8px 10px;
+    height: 20px;
+}
+#select_result{
+    margin-top: 10px;
+}

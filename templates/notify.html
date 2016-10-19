@@ -1,0 +1,23 @@
+{% extends "system.html" %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="/static/css/system.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/notify.css">
+{% endblock %}
+{% block main %}
+    <div id="main">
+        <div class="notify">
+            <div class="notify_head">
+                <div class="notify_title">{{ notify.title }}</div>
+                <div class="notify_ax">
+                    <a href="/SCS/system/">返回首页</a>
+                    <time>{{ notify.term}} {{ notify.time }}</time>
+                </div>
+            </div>
+            <div class="notify_content">
+                {% for pra in notify.content %}
+                    <pre>{{pra}}</pre>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

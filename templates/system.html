@@ -12,20 +12,70 @@
                 <li id="header_dropdown_btn">
                     <img src="/static/image/common/arrow_drop_down.png">
                     <div id="header_dropdown">
+                        <div class="header_dropdown_arrow_border"></div>
+                        <div class="header_dropdown_arrow"></div>
                         <div id="signID">As <strong>{{ user.username }}</strong></div>
                         <ul>
-                            <li>维护我的信息</li>
-                            <li>杀死那个胖子</li>
                             <li id="sign_out">退出</li>
                         </ul>
-                        <div class="dropdown_arrow_border"></div>
-                        <div class="dropdown_arrow"></div>
                     </div>
                 </li>
             </ul>
             <div style="clear: both"></div>
         </div></div>
+         {% else %}
+         aaa
      {% endif %}
+{% endblock %}
+{% block warp %}
+    <div id="warp">
+    {% block left %}
+        <div id="left">
+        {% ifequal user_type "student" %}
+        <ul>
+            <li><a href="/SCS/system/"><img src="/static/image/system/p1.png/">系统中心</a><div id="left_arrow"></div></li>
+            <li><a href="/SCS/look_course/"><img src="/static/image/system/p2.png">学生选课</a></li>
+            <li><a href="/SCS/select_result/"><img src="/static/image/system/p3.png">选课结果</a></li>
+            <li><a href="/SCS/finish_course/"><img src="/static/image/system/p4.png">已修课程</a></li>
+        </ul>
+        {% else %}
+            {% ifequal user_type "teacher" %}
+                <ul>
+                    <li><a href="/SCS/system/"><img src="/static/image/system/p1.png/">系统中心</a><div id="left_arrow"></div></li>
+                    <li><a href="/SCS/own_course/"><img src="/static/image/system/p2.png">查看开课信息</a></li>
+                    <li><a href="/SCS/control_student/"><img src="/static/image/system/p3.png">课程学生名单</a></li>
+                </ul>
+            {% endifequal %}
+        {% endifequal %}
+        </div>
+    {% endblock %}
+    {% block main %}
+        <div id="main">
+        {% ifequal user_type "student"%}
+            <div id="student_system">
+                <div id="main_title">{{ user.common_user_profile.student_profile.college }} {{user.common_user_profile.student_profile.major}}（{{user.common_user_profile.student_profile.grade}}.级--）{{ user.common_user_profile.student_profile.s_class }}斑 {{ user.common_user_profile.name }} 同学，你好！现在是{{ current_term}}。</div>
+                <div id="select_explain">今天是:{{ dateDict.today }}<br>你的选课时间是:{{ dateDict.start_select }} 到 {{ dateDict.end_select }}<br>你的退选时间是:{{ dateDict.start_drop }} 到 {{ dateDict.end_drop }}</div>
+        {% else %}
+            {% ifequal user_type "teacher" %}
+                <div id="teacher_system">
+                    <div id="main_title">{{ user.common_user_profile.teacher_profile.college }} {{ user.common_user_profile.name }} 老师你好！现在是{{ current_term}}。</div>
+            {% endifequal %}
+        {% endifequal %}
+                <div id="system_message_container">
+                    <div id="system_message_title">系统公告</div>
+                    <ul id="system_messages">
+                        {% for notify in notifies %}
+                        <li><a href="{{ notify.url }}" >{{notify.title}}</a><time>{{ notify.time }}</time></li>
+                        {% endfor %}
+                        {% if not notifies %}
+                            <div id="no_notify_tip">没有系统公告</div>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    </div>
 {% endblock %}
 {% block js %}
     <script type="text/javascript" src="/static/js/system.js"></script>
