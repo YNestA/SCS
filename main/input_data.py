@@ -3,6 +3,8 @@ from random import *
 from django.contrib.auth.models import *
 from models import *
 
+'''此为测试文件'''
+
 students_first_name=["柁","古","范","芈","李","吴","时","慕容","乔","西门"]
 students_last_name=["嘉熹","廷钰","日天","复","铁柱","越","峰","吹雪","钦诚","一一"]
 teachers_first_name=["向","张","丁","王","刁","苏","段","孔","杨"]
