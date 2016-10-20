@@ -12,11 +12,14 @@
                 <select id="search_category" name="term">
                     <option value="all" selected="selected">所有学期</option>
                     {% for term in terms %}
-                    <option value="{{term.id}}">{{ term.description }}</option>
+                        {% ifequal term.id search_term_id %}
+                        <option value="{{term.id}}" selected>{{ term.description }}</option>
+                        {% else %}
+                        <option value="{{term.id}}">{{ term.description }}</option>
+                        {% endifequal %}
                     {% endfor %}
                 </select>
-                    <input type="text" id="search_input" name="name" value="{{ search_name }}">
-                    <button id="search_btn" type="submit">搜索</button>
+                    <input type="text" id="search_input" name="name" value="{{ search_name }}"><button id="search_btn" type="submit">搜索</button>
             </form>
             <table id="finish_table">
                 <thead>

@@ -1,7 +1,10 @@
+#main{
+    padding-top: 0px;
+}
 div.notify{
     margin: 0px 35px;
-    height: 100%;
     background-color: rgb(252,252,252);
+    min-height: 600px;
     padding: 10px 30px;
     box-shadow: 0px 0px 12px 3px rgba(0,0,0,0.1);
 }
@@ -12,12 +15,9 @@ div.notify_title{
     text-align: center;
     font-size: 24px;
     line-height: 50px;
-    height: 50px;
     color: #1b6d85;
 }
 div.notify_content{
-    height: 500px;
-    overflow: auto;
 }
 div.notify pre{
     font-size: 16px;

@@ -6,28 +6,27 @@ function modifyScore($target) {
     var $scoreInput=$target.closest("tr").find("input.score_input");
     //var old_color=$scoreInput.css("background-color");
     var old_value=$scoreInput.val();
-    $scoreInput.attr("readonly",false).addClass("in_modify").focus();
+    $scoreInput.unbind("focus",myBlur).attr("readonly",false).addClass("in_modify").focus();
     $("html,body").click(function (event) {
-        //if(!/\d+|(\d+\.\d+)/g.test($scoreInput.val())){
-        //    $.myAlert("成绩格式有误");
-        //    $scoreInput.focus();
-        //}else {
-        $scoreInput.attr("readonly", true).removeClass("in_modify");
-        if ($scoreInput.val() !== old_value) {
-            $scoreInput.addClass("after_modify");
-        };
-        $("html,body").unbind("click", arguments.callee);
-
+        if(!$(event.target).hasClass("in_modify")) {
+            $scoreInput.focus(myBlur).attr("readonly", true).removeClass("in_modify");
+            if ($scoreInput.val() !== old_value) {
+                $scoreInput.addClass("after_modify");
+            }
+            ;
+            $("html,body").unbind("click", arguments.callee);
+        }
     });
 }
 function submitScore(){
     $("html").click();
     var $inputs=$("input.after_modify");
     for(var i=0;i<$inputs.length;i++){
-        if(!/^\d+(\.\d+){0,1}$/.test($inputs.eq(i).val())){
-            $inputs.eq(i).addClass("error_score");
+        var $theInput=$inputs.eq(i);
+        if(!(/^((\d{1,2}(\.\d+)?)|100)$/.test($theInput.val())||/^100$/.test($theInput.val()))){
+            $theInput.addClass("error_score");
         }else {
-            $inputs.eq(i).removeClass("error_score");
+            $theInput.removeClass("error_score");
         };
     }
     console.log($("input.error_score").length);
@@ -67,8 +66,12 @@ function dealStudentTable(event) {
         submitScore();
     }
 }
+function myBlur(event) {
+    $(this).blur();
+}
 $(document).ready(function () {
     $("#left_arrow").detach().appendTo($("#left ul li:eq(2)"));
     setTableBC();
+    $("input.score_input").focus(myBlur);
     $("#student_table tbody").click(dealStudentTable);
 });

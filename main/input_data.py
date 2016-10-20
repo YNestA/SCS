@@ -61,3 +61,9 @@ def students_select_course():
         courses[index2].amount += 1
         courses[index1].save()
         courses[index2].save()
+
+def set_courses_lt():
+    courses=Course.objects.all()
+    for course in courses:
+        lt=CourseLocationTime(start_week=2,end_week=11,start_class_num=9,end_class_num=11,loaction="东十二 110",term=Term.get_current_term(),day="周三",course=course)
+        lt.save()

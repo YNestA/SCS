@@ -10,11 +10,15 @@
             <form id="search" method="post" action="/SCS/control_student/search/">
                 {% csrf_token %}
                 <select id="search_type" name="search_type">
-                    <option value="course_name">按课程名称查找</option>
+                    {% ifequal search_type "course_name" %}
+                    <option value="course_name" selected="selected">按课程名称查找</option>
                     <option value="student_id">按学生学号查找</option>
+                    {% else %}
+                    <option value="course_name">按课程名称查找</option>
+                    <option value="student_id" selected="selected">按学生学号查找</option>
+                    {% endifequal %}
                 </select>
-                <input type="text" id="search_input" name="value" >
-                <button id="search_btn" type="submit">搜索</button>
+                <input type="text" id="search_input" name="value" value="{{ search_input_value }}"><button id="search_btn" type="submit">搜索</button>
             </form>
             <table id="student_table">
                 <thead>

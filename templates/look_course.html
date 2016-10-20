@@ -10,14 +10,15 @@
             <form id="search" action="/SCS/look_course/search/" method="post">
                 {% csrf_token %}
                 <select id="search_category" name="category">
-                    <option value="all" selected="selected">全部课程类别</option>
-                    <option value="nature">自然科学类</option>
-                    <option value="society">人文社会科学类</option>
-                    <option value="comprehensive">综合类</option>
-                    <option value="art">人文艺术类</option>
+                    {% for category in categorys %}
+                        {% ifequal category.value search_category_value %}
+                            <option value="{{ category.value }}" selected="selected">{{ category.description }}</option>
+                        {% else %}
+                            <option value="{{ category.value }}">{{ category.description }}</option>
+                        {% endifequal %}
+                    {% endfor %}
                 </select>
-                    <input type="text" id="search_input" name="name" value={{ search_name }}>
-                    <button id="search_btn" type="submit">搜索</button>
+                    <input type="text" id="search_input" name="name" value="{{ search_input_value }}"><button id="search_btn" type="submit">搜索</button>
             </form>
             <table id="course_table">
                 <thead>

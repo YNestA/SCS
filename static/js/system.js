@@ -26,7 +26,10 @@ function signOut(event) {
     })
 }
 function caluWarpHeight(event) {
-    $("#warp").outerHeight($(window).height()-$("#header").height());
+    var $warp=$("#warp");
+    if($warp.outerHeight()+$("#header").height()<$(window).height()) {
+        $warp.outerHeight($(window).height() - $("#header").height());
+    }
 }
 function tableSelectPager(event) {
     window.location.href=$(this).attr("data-url")+$(this).children("option:selected").val()+"/";

@@ -5,6 +5,7 @@ from models import *
 MAX_PER_CAN_SELECT=2
 
 category_value_name={
+    "all":"全部课程类别",
     "nature":"自然科学类",
     "society":"人文社会科学类",
     "comprehensive":"综合类",

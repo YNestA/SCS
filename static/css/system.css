@@ -120,8 +120,7 @@ div.header_dropdown_arrow_border{
 #main{
     margin: 0 0 0 210px;
     padding-right: 10px;
-    height: 100%;
-    overflow: hidden;
+    padding-top: 10px;
 }
 
 #left ul{
@@ -177,14 +176,18 @@ a.prev_btn:hover,a.next_btn:hover{
     background: #f6f4f0;
 }
 #search_input{
-    border: 1px solid lightgray;
-    height: 20px;
+    border: 1px solid rgb(50,90,110);
+    border-right:none ;
+    box-sizing: border-box;
+    height: 25px;
 }
 #search_btn{
-    border: 1px solid lightgray;
+    border: 1px solid rgb(50,90,110);
     cursor: pointer;
-    background-color: white;
+    background-color: rgb(50,90,110);
     transition: all 0.1s linear;
+    height: 25px;
+    color: white;
 }
 #search_btn:hover{
     background-color: rgb(39,72,98);
@@ -207,7 +210,6 @@ a.prev_btn:hover,a.next_btn:hover{
 }
 
 #student_system,#teacher_system{
-    margin-top: 10px;
 }
 #select_explain{
     border: 1px solid lightslategrey;
