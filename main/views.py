@@ -174,7 +174,7 @@ def finish_course(request,term_id="all",page=1,course_name=""):
     if page<whole_page: params["next_url"]="/SCS/finish_course/"+term_id+"page"+str(page+1)
     return render_to_response("finish_course.html",params,context_instance=RequestContext(request))
 
-
+@login_required(login_url="/SCS/login/")
 def student_select_course(request):
     if request.method=="POST":
         try:
@@ -195,6 +195,7 @@ def student_select_course(request):
     return HttpResponse("You shall not pass!")
 
 
+@login_required(login_url="/SCS/login/")
 def student_drop_course(request):
     if request.method=="POST":
         try:
@@ -210,6 +211,7 @@ def student_drop_course(request):
             return HttpResponse(json.dumps({"res":"fail"}))
     return HttpResponse("You shall not pass!")
 
+@login_required(login_url="/SCS/login/")
 def look_course_lt(request):
     if request.method=="POST":
         course_id=request.POST.get("course_id",None)
@@ -298,6 +300,7 @@ def teacher_control_student(request,course_id="",student_id="",course_name="",pa
 
     return render_to_response("control_student.html",params,context_instance=RequestContext(request))
 
+@login_required(login_url="/SCS/login/")
 def modify_score(request):
     if request.method=="POST":
         try:
